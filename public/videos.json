@@ -1,0 +1,34 @@
+{
+  "videos": [
+    {
+      "id": "001",
+      "title": "Why SQLite is Taking Over",
+      "description": "Deep dive into SQLite's architecture and why it's becoming the default database for modern applications. Explore how this lightweight database is powering everything from mobile apps to edge computing.",
+      "youtubeId": "XcAYkriuQ1o",
+      "thumbnailUrl": "https://img.youtube.com/vi/XcAYkriuQ1o/maxresdefault.jpg",
+      "duration": "14:32",
+      "category": "tech",
+      "dateAdded": "2026-01-06"
+    },
+    {
+      "id": "002",
+      "title": "The Economics of Open Source",
+      "description": "How do open source projects sustain themselves financially? This video explores various business models, from dual licensing to foundation support, and what makes them work.",
+      "youtubeId": "a8Th0ocnzyw",
+      "thumbnailUrl": "https://img.youtube.com/vi/a8Th0ocnzyw/maxresdefault.jpg",
+      "duration": "12:45",
+      "category": "business",
+      "dateAdded": "2026-01-05"
+    },
+    {
+      "id": "003",
+      "title": "Understanding System Design Trade-offs",
+      "description": "Every system design decision involves trade-offs. Learn how to think about consistency, availability, and partition tolerance when building distributed systems.",
+      "youtubeId": "xpDnVSmNFX0",
+      "thumbnailUrl": "https://img.youtube.com/vi/xpDnVSmNFX0/maxresdefault.jpg",
+      "duration": "15:20",
+      "category": "tech",
+      "dateAdded": "2026-01-04"
+    }
+  ]
+}
