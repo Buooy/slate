@@ -379,3 +379,186 @@ All core features implemented and tested:
    - Vercel auto-deploys in ~30 seconds
 
 **Status:** MVP ready for deployment and user testing.
+
+---
+
+## Design Concept - V2 Enhancement Plan
+
+### Design Analysis Summary
+
+**Current State Strengths:**
+- Clean Radix UI foundation with accessible primitives
+- Mobile-first responsive structure
+- Simple navigation hierarchy
+
+**Critical Improvements Needed:**
+1. **Generic aesthetic** - lacks unique brand identity beyond basic gray/black
+2. **Missing habit-forming patterns** - no streaks, progress tracking, or daily ritual elements
+3. **Friction points** - 3 steps to watch video (tap → dialog → load)
+4. **Information hierarchy** - all content gets equal visual weight
+5. **Telegram integration missed** - doesn't leverage platform's visual language
+
+### Design Principles for Slate
+
+1. **Ritual Over Utility** - Design patterns that reinforce daily habit formation
+2. **Clarity Over Cleverness** - Every element serves core job: decide if video is worth watching
+3. **Delight Through Restraint** - Micro-interactions that surprise without distracting
+4. **Telegram Native** - Visual language that feels at home in Telegram ecosystem
+5. **Speed to Content** - Minimize friction between "open app" and "watching video" to <2 taps
+
+### Color Palette & Visual System
+
+**Brand Colors:**
+```css
+--slate-primary: 249 115 22;        /* Orange 600 - warm, energetic */
+--slate-primary-soft: 254 215 170;  /* Orange 200 - soft backgrounds */
+--slate-accent: 59 130 246;         /* Blue 500 - Telegram familiarity */
+
+--slate-bg: 250 250 250;            /* Warm white, not cold gray */
+--slate-surface: 255 255 255;       /* Pure white cards */
+--slate-text-primary: 17 24 39;     /* Gray 900 - high contrast */
+--slate-text-secondary: 107 114 128; /* Gray 500 - supporting */
+```
+
+**Typography Scale:**
+- Hero: 32px/1.2, 700 weight (Today's Pick title)
+- Title: 24px/1.3, 600 weight (section headers)
+- Body: 16px/1.5, 400 weight (descriptions)
+- Caption: 12px/1.3, 500 weight, uppercase (metadata)
+
+### Key Component Enhancements
+
+**1. Today's Pick Screen**
+- Gradient background (orange-50/30 → white) for visual warmth
+- Time-based greeting header ("Good morning, [name]")
+- Daily streak indicator (🔥 3 days)
+- Hero video card with:
+  - Gradient overlay on thumbnail for readability
+  - Category badge (top-left)
+  - Duration badge (bottom-right, redesigned)
+  - Orange gradient CTA button with shimmer effect
+  - "Save for Later" secondary action
+- Weekly progress tracker below (3/5 videos this week)
+
+**2. Catalog Screen**
+- Sticky header with category filters (horizontal scroll chips)
+- Compact card layout for efficient browsing:
+  - Horizontal layout (thumbnail left, content right)
+  - 40x24 thumbnail size
+  - 2-line title clamp
+  - Date + category metadata
+- Week-based grouping ("This Week", "Last Week", etc.)
+- Empty states with contextual messaging
+
+**3. Navigation**
+- Refined tab design with proper icons (not emojis):
+  - Play icon for Today
+  - Grid icon for Catalog
+- Active state: orange-500/10 background + orange-600 text
+- Haptic feedback on tab change
+- Backdrop blur effect on tab bar
+
+**4. Video Player**
+- Full-screen black background
+- Visible close button (top-right overlay)
+- Video info panel below player (title + metadata)
+- Autoplay enabled for immediate engagement
+- Track watch time analytics on close
+
+### Habit-Forming Components (New)
+
+**DailyStreak Component:**
+- Shows consecutive days watched
+- Orange gradient pill background
+- Fire emoji + number of days
+- Hidden if streak = 0
+
+**TimeContext Component:**
+- Dynamic greeting based on time of day
+- Personalized with user's first name from Telegram
+- Subtle, not intrusive
+
+**WatchProgress Component:**
+- Weekly goal tracker (default: 5 videos/week)
+- Progress bar with gradient fill
+- Encouraging copy for completion
+
+### Animation & Interaction Patterns
+
+**Micro-interactions:**
+- Button hover: scale(1.02) + enhanced shadow
+- Button active: scale(0.98)
+- Card hover: border color shift + shadow lift
+- Shimmer effect on primary CTA
+- Smooth transitions (cubic-bezier timing)
+
+**Haptic Feedback (Telegram):**
+- Light: Navigation taps
+- Medium: Video play action
+- Success: Streak milestone
+- Error: Failed actions
+
+### Accessibility Standards (WCAG 2.1 AA)
+
+- **Color Contrast:** All text meets 4.5:1 minimum
+  - Primary text: 14.3:1
+  - Secondary text: 5.7:1
+  - Orange CTA: 4.7:1
+- **Keyboard Navigation:** All interactive elements accessible
+- **Screen Readers:** Proper ARIA labels and roles
+- **Focus States:** Visible 2px orange outline with offset
+
+### Implementation Priority
+
+**Phase 1: Foundation** (Immediate)
+1. Update color palette in globals.css
+2. Implement typography system
+3. Redesign Navigation with proper icons
+4. Add haptic feedback integration
+
+**Phase 2: Core Experience** (Week 1-2)
+1. Redesign Today's Pick screen
+2. Build DailyStreak, TimeContext, WatchProgress components
+3. Enhance primary CTA with gradient + animation
+4. Update VideoPlayer with analytics tracking
+
+**Phase 3: Catalog Enhancement** (Week 2-3)
+1. Create compact VideoCard variant
+2. Add category filtering system
+3. Implement week-based grouping
+4. Design empty states
+
+**Phase 4: Polish** (Week 3-4)
+1. Add all micro-animations
+2. Complete accessibility audit
+3. Performance optimization (lazy loading, image optimization)
+4. Cross-device testing
+
+### Success Metrics (Post-Implementation)
+
+**Engagement:**
+- Time to first video play: <3 seconds (target)
+- Daily Pick completion rate: >60%
+- D7 retention improvement: +15%
+
+**Habit Formation:**
+- 7-day streak retention: >40%
+- Weekly goal completion: >50%
+- Morning usage (9-11 AM): >30%
+
+**UX Quality:**
+- Bounce rate: <20%
+- Catalog exploration depth: >2 videos
+- Video abandonment: <30%
+
+### Design Philosophy Summary
+
+This design transforms Slate from a generic video app into a **premium daily ritual** by:
+
+1. **Visual Identity:** Orange gradient brand creates warmth and energy
+2. **Habit Formation:** Streaks, greetings, and progress tracking create daily pull
+3. **Friction Reduction:** Clear CTAs and optimized hierarchy speed to content
+4. **Mobile Excellence:** Compact layouts, haptic feedback, smooth animations
+5. **Accessibility First:** WCAG AA compliant throughout
+
+Every design decision reinforces the core hypothesis: **Can we create a daily video-watching habit in Telegram?** The refined experience uses familiar patterns, reduced friction, and delightful micro-interactions to maximize habit formation probability.
