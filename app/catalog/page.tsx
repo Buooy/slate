@@ -7,6 +7,20 @@ import { VideoCard } from '@/components/VideoCard'
 import { VideoPlayer } from '@/components/VideoPlayer'
 import { Navigation } from '@/components/Navigation'
 
+function PlayIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <polygon points="5 3 19 12 5 21 5 3" />
+    </svg>
+  )
+}
+
 function GridIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -25,6 +39,17 @@ function GridIcon({ className }: { className?: string }) {
       <rect x="14" y="14" width="7" height="7" />
       <rect x="3" y="14" width="7" height="7" />
     </svg>
+  )
+}
+
+function SlateLogo() {
+  return (
+    <div className="flex items-center justify-center gap-2">
+      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-hover flex items-center justify-center shadow-primary">
+        <PlayIcon className="w-4 h-4 text-white" />
+      </div>
+      <span className="text-lg font-bold text-foreground tracking-tight">Slate</span>
+    </div>
   )
 }
 
@@ -79,11 +104,18 @@ export default function CatalogPage() {
 
   return (
     <div className="min-h-screen bg-background pb-28">
-      {/* Header */}
+      {/* Telegram Safe Area Header with Branding */}
       <header className="sticky top-0 z-40 glass-strong border-b border-border-soft">
-        <div className="max-w-2xl mx-auto px-4 py-4">
-          <h1 className="text-xl font-bold text-foreground">Previous Picks</h1>
-          <p className="text-sm text-foreground-muted">Browse our curated collection</p>
+        <div className="max-w-2xl mx-auto px-4">
+          {/* Spacer for Telegram's Close/Menu buttons */}
+          <div className="flex items-center justify-center min-h-[44px] pt-2">
+            <SlateLogo />
+          </div>
+          {/* Page Title */}
+          <div className="pb-3 pt-2">
+            <h1 className="text-xl font-bold text-foreground">Previous Picks</h1>
+            <p className="text-sm text-foreground-muted">Browse our curated collection</p>
+          </div>
         </div>
       </header>
 
