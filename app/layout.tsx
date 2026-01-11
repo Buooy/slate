@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Providers } from './providers'
 import './globals.css'
 import Script from 'next/script'
@@ -6,6 +6,15 @@ import Script from 'next/script'
 export const metadata: Metadata = {
   title: 'Slate - Curated Video Picks',
   description: 'Your daily dose of curated, insightful videos',
+}
+
+// Enable safe area insets for iOS notch/Dynamic Island
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({

@@ -109,6 +109,9 @@ export function Navigation() {
               onClick={() => handleNavigation('catalog')}
             />
           </div>
+          <div className="text-center pb-1">
+            <span className="text-[10px] text-foreground-subtle">v0.5.0</span>
+          </div>
         </div>
       </div>
     </nav>
