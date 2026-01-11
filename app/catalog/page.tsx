@@ -104,15 +104,15 @@ export default function CatalogPage() {
 
   return (
     <div className="min-h-screen bg-background pb-28">
-      {/* Telegram Safe Area Header with Branding */}
-      <header className="sticky top-0 z-40 glass-strong border-b border-border-soft">
+      {/* Telegram Safe Area Header with Branding - accounts for iOS notch + Telegram buttons */}
+      <header className="sticky top-0 z-40 glass-strong border-b border-border-soft telegram-header-safe">
         <div className="max-w-2xl mx-auto px-4">
-          {/* Spacer for Telegram's Close/Menu buttons */}
-          <div className="flex items-center justify-center min-h-[44px] pt-2">
+          {/* Branding - centered between Telegram's Close/Menu buttons */}
+          <div className="flex items-center justify-center pb-2">
             <SlateLogo />
           </div>
           {/* Page Title */}
-          <div className="pb-3 pt-2">
+          <div className="pb-3">
             <h1 className="text-xl font-bold text-foreground">Previous Picks</h1>
             <p className="text-sm text-foreground-muted">Browse our curated collection</p>
           </div>

@@ -345,6 +345,17 @@ body {
   padding-top: max(1rem, env(safe-area-inset-top));
 }
 
+/* Telegram Mini App header safe area
+   Accounts for: iOS notch + Telegram's Close/Menu buttons (~44px) */
+.telegram-header-safe {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 44px);
+}
+
+/* Content that appears below Telegram's header buttons */
+.telegram-content-start {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 56px);
+}
+
 /* ============================================
    SCROLL CUSTOMIZATION
    ============================================ */
