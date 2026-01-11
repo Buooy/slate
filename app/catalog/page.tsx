@@ -112,7 +112,7 @@ export default function CatalogPage() {
             <SlateLogo />
           </div>
           {/* Page Title - with top margin for spacing */}
-          <div className="pb-3 pt-4">
+          <div className="pb-3 pt-8">
             <h1 className="text-xl font-bold text-foreground">Previous Picks</h1>
             <p className="text-sm text-foreground-muted">Browse our curated collection</p>
           </div>

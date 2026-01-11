@@ -63,7 +63,7 @@ export default async function HomePage() {
 
       <div className="max-w-2xl mx-auto px-4">
         {/* Page Header - with top margin for spacing from Telegram buttons */}
-        <div className="mb-5 mt-6 animate-fade-in">
+        <div className="mb-5 mt-10 animate-fade-in">
           <div className="flex items-center justify-between mb-1">
             <h1 className="text-2xl font-bold text-foreground">Today&apos;s Pick</h1>
             <DailyStreak streak={3} />
