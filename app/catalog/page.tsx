@@ -45,10 +45,10 @@ function GridIcon({ className }: { className?: string }) {
 function SlateLogo() {
   return (
     <div className="flex items-center justify-center gap-2">
-      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-hover flex items-center justify-center shadow-primary">
-        <PlayIcon className="w-4 h-4 text-white" />
+      <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center">
+        <PlayIcon className="w-4 h-4 text-slate-700" />
       </div>
-      <span className="text-lg font-bold text-foreground tracking-tight">Slate</span>
+      <span className="text-lg font-bold text-slate-800 tracking-tight">Slate</span>
     </div>
   )
 }
