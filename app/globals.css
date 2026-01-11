@@ -2,39 +2,39 @@
 
 /* ============================================
    SLATE V2 DESIGN SYSTEM
-   A warm, vibrant theme for daily discovery
+   A refined, sophisticated theme for daily discovery
    ============================================ */
 
 :root {
-  /* Primary - Warm Coral/Orange */
-  --primary: 24 95% 53%;
-  --primary-hover: 21 90% 48%;
-  --primary-soft: 30 100% 96%;
+  /* Primary - Slate Blue */
+  --primary: 215 25% 27%;
+  --primary-hover: 215 28% 22%;
+  --primary-soft: 210 40% 96%;
   --primary-foreground: 0 0% 100%;
 
-  /* Accent - Deep Indigo */
-  --accent: 239 84% 67%;
-  --accent-soft: 239 100% 96%;
+  /* Accent - Soft Blue */
+  --accent: 217 91% 60%;
+  --accent-soft: 214 100% 97%;
   --accent-foreground: 0 0% 100%;
 
   /* Background & Surfaces */
-  --background: 30 25% 98%;
-  --background-alt: 30 20% 95%;
+  --background: 210 20% 98%;
+  --background-alt: 210 15% 95%;
   --surface: 0 0% 100%;
   --surface-elevated: 0 0% 100%;
 
   /* Text Colors */
-  --foreground: 222 47% 11%;
+  --foreground: 215 25% 17%;
   --foreground-muted: 215 16% 47%;
   --foreground-subtle: 215 20% 65%;
 
   /* Card */
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
+  --card-foreground: 215 25% 17%;
 
   /* Borders */
-  --border: 220 13% 91%;
-  --border-soft: 220 14% 96%;
+  --border: 214 20% 91%;
+  --border-soft: 214 20% 96%;
 
   /* Special States */
   --success: 142 71% 45%;
@@ -45,8 +45,8 @@
   --error-soft: 0 93% 96%;
 
   /* Shadows & Effects */
-  --shadow-color: 220 60% 50%;
-  --glow-primary: 24 95% 53%;
+  --shadow-color: 215 30% 50%;
+  --glow-primary: 215 25% 27%;
 
   /* Radius */
   --radius: 0.75rem;
@@ -56,22 +56,22 @@
 }
 
 .dark {
-  /* Primary stays warm */
-  --primary: 24 95% 58%;
-  --primary-hover: 24 95% 65%;
-  --primary-soft: 24 50% 15%;
+  /* Primary - Slate Blue (lighter for dark mode) */
+  --primary: 215 25% 50%;
+  --primary-hover: 215 28% 55%;
+  --primary-soft: 215 30% 15%;
   --primary-foreground: 0 0% 100%;
 
   /* Accent adapts */
-  --accent: 239 84% 75%;
-  --accent-soft: 239 50% 20%;
+  --accent: 217 91% 70%;
+  --accent-soft: 217 50% 20%;
   --accent-foreground: 0 0% 100%;
 
   /* Dark Background & Surfaces */
-  --background: 222 47% 6%;
-  --background-alt: 222 47% 8%;
-  --surface: 222 47% 11%;
-  --surface-elevated: 222 40% 14%;
+  --background: 215 30% 6%;
+  --background-alt: 215 30% 8%;
+  --surface: 215 30% 11%;
+  --surface-elevated: 215 25% 14%;
 
   /* Text Colors */
   --foreground: 210 40% 98%;
@@ -79,12 +79,12 @@
   --foreground-subtle: 215 16% 47%;
 
   /* Card */
-  --card: 222 47% 11%;
+  --card: 215 30% 11%;
   --card-foreground: 210 40% 98%;
 
   /* Borders */
-  --border: 222 30% 20%;
-  --border-soft: 222 30% 15%;
+  --border: 215 25% 20%;
+  --border-soft: 215 25% 15%;
 }
 
 /* ============================================
@@ -158,28 +158,31 @@ body {
    ============================================ */
 
 .btn-primary {
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(21 90% 48%) 100%);
+  background: linear-gradient(145deg, hsl(215 25% 32%) 0%, hsl(215 28% 22%) 100%);
   color: hsl(var(--primary-foreground));
   font-weight: 600;
   border-radius: var(--radius);
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow:
-    0 4px 14px -2px hsla(var(--primary) / 0.4),
-    inset 0 1px 0 hsla(0 0% 100% / 0.15);
+    0 4px 14px -2px hsla(215 30% 20% / 0.35),
+    0 1px 3px hsla(215 30% 20% / 0.2),
+    inset 0 1px 0 hsla(0 0% 100% / 0.1);
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow:
-    0 8px 20px -4px hsla(var(--primary) / 0.5),
+    0 8px 25px -4px hsla(215 30% 20% / 0.45),
+    0 4px 10px hsla(215 30% 20% / 0.2),
     inset 0 1px 0 hsla(0 0% 100% / 0.15);
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.98);
   box-shadow:
-    0 2px 8px -2px hsla(var(--primary) / 0.4),
-    inset 0 1px 0 hsla(0 0% 100% / 0.15);
+    0 2px 8px -2px hsla(215 30% 20% / 0.4),
+    inset 0 2px 4px hsla(0 0% 0% / 0.1);
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-secondary {
@@ -188,13 +191,19 @@ body {
   font-weight: 500;
   border: 1px solid hsl(var(--border));
   border-radius: var(--radius);
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-secondary:hover {
   background: hsl(var(--background-alt));
-  border-color: hsl(var(--primary) / 0.3);
+  border-color: hsl(var(--primary));
   color: hsl(var(--primary));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px hsla(215 30% 20% / 0.15);
+}
+
+.btn-secondary:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* ============================================
@@ -361,22 +370,73 @@ body {
    ============================================ */
 
 .btn-press {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.2s ease,
+              filter 0.2s ease;
+  will-change: transform;
 }
 
 .btn-press:active {
-  transform: scale(0.97);
+  transform: scale(0.95);
+  filter: brightness(0.95);
 }
 
-/* Page transition wrapper */
+/* Ripple effect for buttons */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, hsla(0 0% 100% / 0.3) 0%, transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.btn-ripple:active::after {
+  transform: scale(2.5);
+  opacity: 1;
+  transition: transform 0.15s ease-out, opacity 0s;
+}
+
+/* Page transition wrapper - fancy slide and fade */
 .page-transition {
-  animation: page-enter 0.3s ease-out;
+  animation: page-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes page-enter {
   0% {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(20px) scale(0.98);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Staggered children animation */
+.stagger-children > * {
+  animation: stagger-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes stagger-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
   }
   100% {
     opacity: 1;
@@ -384,22 +444,54 @@ body {
   }
 }
 
-/* Card press animation */
+/* Card press animation - bouncy */
 .card-press {
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease;
+  will-change: transform;
 }
 
 .card-press:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
+  box-shadow:
+    0 1px 2px hsla(var(--shadow-color) / 0.05),
+    0 2px 4px hsla(var(--shadow-color) / 0.05);
 }
 
-/* Navigation tab animation */
+/* Navigation tab animation - snappy */
 .nav-tab-press {
-  transition: transform 0.1s ease, background-color 0.2s ease;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease,
+              color 0.2s ease;
+  will-change: transform;
 }
 
 .nav-tab-press:active {
-  transform: scale(0.95);
+  transform: scale(0.9);
+}
+
+/* Smooth hover lift for interactive elements */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 40px -10px hsla(var(--shadow-color) / 0.2),
+    0 4px 12px hsla(var(--shadow-color) / 0.1);
+}
+
+/* Spring animation utility */
+@keyframes spring-pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.spring-pop {
+  animation: spring-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* ============================================
