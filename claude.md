@@ -562,3 +562,152 @@ This design transforms Slate from a generic video app into a **premium daily rit
 5. **Accessibility First:** WCAG AA compliant throughout
 
 Every design decision reinforces the core hypothesis: **Can we create a daily video-watching habit in Telegram?** The refined experience uses familiar patterns, reduced friction, and delightful micro-interactions to maximize habit formation probability.
+
+---
+
+## Implemented Design Guidelines
+
+### Telegram Mini App Layout
+
+**Header Safe Areas:**
+The app must account for Telegram's native UI elements that overlay the Mini App:
+
+```
+┌─────────────────────────────────────────┐
+│          [iOS Notch/Dynamic Island]     │  ← env(safe-area-inset-top)
+├─────────────────────────────────────────┤
+│ [Close]      [▶ Slate]        [Menu...] │  ← 44px Telegram buttons row
+├─────────────────────────────────────────┤
+│                                         │  ← Additional spacing (16-24px)
+│ Page Title                  [Badges]    │  ← Content starts here
+└─────────────────────────────────────────┘
+```
+
+**CSS Classes:**
+```css
+/* Logo row - inline with Telegram Close/Menu buttons */
+.telegram-header-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Content below Telegram buttons */
+.telegram-content-start {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 64px);
+}
+```
+
+**Header Implementation:**
+- Logo sits in a `h-11` (44px) container, vertically centered
+- Page title/content has `mt-6` (24px) top margin below the logo row
+- This ensures content clears Telegram's Close/Menu buttons on all devices
+
+### Branding
+
+**Slate Logo:**
+- Light gray background (`bg-slate-100`)
+- Dark slate play icon (`text-slate-700`)
+- Dark slate text (`text-slate-800`)
+- Centered in header between Telegram's Close and Menu buttons
+
+### Button & Interaction Animations
+
+**Press Animations (CSS Classes):**
+
+```css
+/* Standard button press - scale down on tap */
+.btn-press {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* Card press - for clickable cards */
+.card-press {
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.card-press:active {
+  transform: scale(0.98);
+}
+
+/* Navigation tab press */
+.nav-tab-press {
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+.nav-tab-press:active {
+  transform: scale(0.95);
+}
+```
+
+**Usage:**
+- All `<Button>` components include `btn-press` by default
+- All `<VideoCard>` components include `card-press`
+- Navigation tabs include `nav-tab-press`
+- Secondary/ghost buttons should add `btn-press` manually
+
+### Page Transitions
+
+**Enter Animation:**
+```css
+.page-transition {
+  animation: page-enter 0.3s ease-out;
+}
+
+@keyframes page-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
+
+**Usage:**
+- Add `page-transition` class to page root container
+- Provides smooth fade-in with subtle upward motion
+
+### Element Animations
+
+**Existing Animation Classes:**
+- `animate-fade-in` - Simple opacity fade (0.3s)
+- `animate-slide-up` - Fade + translate from below (0.3s)
+- `animate-scale-in` - Fade + scale from 95% (0.2s)
+- `shimmer` - Gradient shimmer effect for CTAs (2s infinite)
+- `pulse-glow` - Pulsing shadow effect (2s infinite)
+
+**Staggered Animations:**
+Use inline styles for staggered list animations:
+```tsx
+<div
+  className="animate-slide-up"
+  style={{ animationDelay: `${index * 50}ms` }}
+>
+```
+
+### Design Token Summary
+
+**Colors (HSL format):**
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--primary` | 24 95% 53% | Orange - CTAs, active states |
+| `--primary-soft` | 30 100% 96% | Orange tint backgrounds |
+| `--accent` | 239 84% 67% | Indigo - secondary accent |
+| `--foreground` | 222 47% 11% | Primary text |
+| `--foreground-muted` | 215 16% 47% | Secondary text |
+| `--surface` | 0 0% 100% | Card backgrounds |
+| `--border` | 220 13% 91% | Subtle borders |
+
+**Border Radius:**
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--radius` | 0.75rem (12px) | Buttons, badges |
+| `--radius-lg` | 1rem (16px) | Cards |
+| `--radius-xl` | 1.5rem (24px) | Large containers |
+| `--radius-full` | 9999px | Pills, avatars |
+
+**Shadows:**
+- `shadow-card` - Subtle elevation for cards
+- `shadow-primary` - Orange glow for primary buttons

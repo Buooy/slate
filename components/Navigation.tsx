@@ -54,7 +54,7 @@ function NavItem({ icon, label, isActive, onClick }: NavItemProps) {
     <button
       onClick={onClick}
       className={cn(
-        'flex flex-col items-center gap-1 py-2 px-6 rounded-xl transition-all duration-200',
+        'flex flex-col items-center gap-1 py-2 px-6 rounded-xl nav-tab-press',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
         isActive
           ? 'bg-primary-soft text-primary'

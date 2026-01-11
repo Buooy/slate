@@ -52,17 +52,18 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="min-h-screen gradient-hero pb-28">
-      {/* Telegram Safe Area Header - accounts for iOS notch + Telegram buttons */}
-      <header className="telegram-header-safe px-4 pb-2">
-        <div className="flex items-center justify-center">
+    <div className="min-h-screen gradient-hero pb-28 page-transition">
+      {/* Telegram Safe Area Header - logo inline with Close button */}
+      <header className="telegram-header-safe px-4">
+        {/* This row aligns with Telegram's Close/Menu buttons */}
+        <div className="flex items-center justify-center h-11">
           <SlateLogo />
         </div>
       </header>
 
       <div className="max-w-2xl mx-auto px-4">
-        {/* Page Header */}
-        <div className="mb-5 animate-fade-in">
+        {/* Page Header - with top margin for spacing from Telegram buttons */}
+        <div className="mb-5 mt-6 animate-fade-in">
           <div className="flex items-center justify-between mb-1">
             <h1 className="text-2xl font-bold text-foreground">Today&apos;s Pick</h1>
             <DailyStreak streak={3} />
@@ -131,7 +132,7 @@ export default async function HomePage() {
             />
 
             {/* Secondary Action */}
-            <button className="w-full mt-3 py-2.5 text-sm text-foreground-muted hover:text-primary transition-colors font-medium">
+            <button className="w-full mt-3 py-2.5 text-sm text-foreground-muted hover:text-primary transition-colors font-medium btn-press">
               Save for Later
             </button>
           </div>
