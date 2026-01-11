@@ -346,14 +346,14 @@ body {
 }
 
 /* Telegram Mini App header safe area
-   Accounts for: iOS notch + Telegram's Close/Menu buttons (~44px) */
+   Accounts for: iOS notch + Telegram's Close/Menu buttons (~52px) */
 .telegram-header-safe {
-  padding-top: calc(env(safe-area-inset-top, 0px) + 44px);
+  padding-top: calc(env(safe-area-inset-top, 0px) + 52px);
 }
 
 /* Content that appears below Telegram's header buttons */
 .telegram-content-start {
-  padding-top: calc(env(safe-area-inset-top, 0px) + 56px);
+  padding-top: calc(env(safe-area-inset-top, 0px) + 64px);
 }
 
 /* ============================================
