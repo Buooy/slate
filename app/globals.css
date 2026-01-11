@@ -346,14 +346,60 @@ body {
 }
 
 /* Telegram Mini App header safe area
-   Accounts for: iOS notch + Telegram's Close/Menu buttons (~52px) */
+   Accounts for: iOS notch/Dynamic Island only - logo sits inline with Close button */
 .telegram-header-safe {
-  padding-top: calc(env(safe-area-inset-top, 0px) + 52px);
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 /* Content that appears below Telegram's header buttons */
 .telegram-content-start {
   padding-top: calc(env(safe-area-inset-top, 0px) + 64px);
+}
+
+/* ============================================
+   BUTTON & INTERACTION ANIMATIONS
+   ============================================ */
+
+.btn-press {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* Page transition wrapper */
+.page-transition {
+  animation: page-enter 0.3s ease-out;
+}
+
+@keyframes page-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card press animation */
+.card-press {
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.card-press:active {
+  transform: scale(0.98);
+}
+
+/* Navigation tab animation */
+.nav-tab-press {
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.nav-tab-press:active {
+  transform: scale(0.95);
 }
 
 /* ============================================

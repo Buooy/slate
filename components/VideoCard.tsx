@@ -31,7 +31,7 @@ export function VideoCard({ video, onClick, variant = 'compact' }: VideoCardProp
   if (variant === 'compact') {
     return (
       <article
-        className="card-elevated card-interactive flex gap-4 p-3 group"
+        className="card-elevated card-interactive card-press flex gap-4 p-3 group"
         onClick={onClick}
       >
         {/* Thumbnail */}
@@ -76,7 +76,7 @@ export function VideoCard({ video, onClick, variant = 'compact' }: VideoCardProp
   // Default (full) variant
   return (
     <article
-      className="card-elevated card-interactive overflow-hidden group"
+      className="card-elevated card-interactive card-press overflow-hidden group"
       onClick={onClick}
     >
       {/* Thumbnail */}
