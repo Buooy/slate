@@ -38,7 +38,7 @@ export default async function HomePage() {
 
   if (!todaysPick) {
     return (
-      <div className="min-h-screen gradient-warm flex items-center justify-center p-4 pt-16">
+      <div className="min-h-screen gradient-warm flex items-center justify-center p-4 telegram-content-start">
         <div className="text-center animate-fade-in">
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-soft flex items-center justify-center">
             <PlayIcon className="w-8 h-8 text-primary" />
@@ -53,10 +53,9 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen gradient-hero pb-28">
-      {/* Telegram Safe Area Header */}
-      <header className="pt-2 pb-4 px-4">
-        {/* Spacer for Telegram's Close/Menu buttons - they occupy ~44px on each side */}
-        <div className="flex items-center justify-center min-h-[44px]">
+      {/* Telegram Safe Area Header - accounts for iOS notch + Telegram buttons */}
+      <header className="telegram-header-safe px-4 pb-2">
+        <div className="flex items-center justify-center">
           <SlateLogo />
         </div>
       </header>
