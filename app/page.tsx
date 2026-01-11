@@ -1,7 +1,6 @@
 import { getTodaysPick } from '@/lib/videos'
 import { VideoPlayer } from '@/components/VideoPlayer'
 import { Navigation } from '@/components/Navigation'
-import { TimeContext } from '@/components/TimeContext'
 import { DailyStreak } from '@/components/DailyStreak'
 import { WatchProgress } from '@/components/WatchProgress'
 import { Button } from '@/components/ui/button'
@@ -23,12 +22,23 @@ function PlayIcon({ className }: { className?: string }) {
   )
 }
 
+function SlateLogo() {
+  return (
+    <div className="flex items-center justify-center gap-2">
+      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-hover flex items-center justify-center shadow-primary">
+        <PlayIcon className="w-4 h-4 text-white" />
+      </div>
+      <span className="text-lg font-bold text-foreground tracking-tight">Slate</span>
+    </div>
+  )
+}
+
 export default async function HomePage() {
   const todaysPick = await getTodaysPick()
 
   if (!todaysPick) {
     return (
-      <div className="min-h-screen gradient-warm flex items-center justify-center p-4">
+      <div className="min-h-screen gradient-warm flex items-center justify-center p-4 pt-16">
         <div className="text-center animate-fade-in">
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-soft flex items-center justify-center">
             <PlayIcon className="w-8 h-8 text-primary" />
@@ -43,20 +53,25 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen gradient-hero pb-28">
-      <div className="max-w-2xl mx-auto px-4 pt-6">
-        {/* Header Section */}
-        <header className="mb-6 animate-fade-in">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <TimeContext className="text-foreground-muted text-sm mb-1" />
-              <h1 className="text-2xl font-bold text-foreground">Today&apos;s Pick</h1>
-            </div>
+      {/* Telegram Safe Area Header */}
+      <header className="pt-2 pb-4 px-4">
+        {/* Spacer for Telegram's Close/Menu buttons - they occupy ~44px on each side */}
+        <div className="flex items-center justify-center min-h-[44px]">
+          <SlateLogo />
+        </div>
+      </header>
+
+      <div className="max-w-2xl mx-auto px-4">
+        {/* Page Header */}
+        <div className="mb-5 animate-fade-in">
+          <div className="flex items-center justify-between mb-1">
+            <h1 className="text-2xl font-bold text-foreground">Today&apos;s Pick</h1>
             <DailyStreak streak={3} />
           </div>
-          <p className="text-foreground-muted">
+          <p className="text-foreground-muted text-sm">
             Your daily dose of curated content
           </p>
-        </header>
+        </div>
 
         {/* Main Card */}
         <div className="card-elevated overflow-hidden animate-slide-up">
@@ -97,11 +112,11 @@ export default async function HomePage() {
           </div>
 
           {/* Content Section */}
-          <div className="p-6">
+          <div className="p-5">
             <h2 className="text-xl font-bold text-foreground mb-2 text-balance leading-tight">
               {todaysPick.title}
             </h2>
-            <p className="text-foreground-muted text-sm mb-6 line-clamp-2">
+            <p className="text-foreground-muted text-sm mb-5 line-clamp-2">
               {todaysPick.description}
             </p>
 
@@ -124,7 +139,7 @@ export default async function HomePage() {
         </div>
 
         {/* Progress Section */}
-        <div className="mt-6 p-4 card-elevated animate-slide-up" style={{ animationDelay: '100ms' }}>
+        <div className="mt-5 p-4 card-elevated animate-slide-up" style={{ animationDelay: '100ms' }}>
           <WatchProgress watched={2} goal={5} />
         </div>
       </div>
